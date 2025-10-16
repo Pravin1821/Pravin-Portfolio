@@ -1,5 +1,6 @@
 import SectionWrapper from '../components/SectionWrapper.jsx';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const projects = [
   {
@@ -27,6 +28,7 @@ const projects = [
 ];
 
 export default function Projects() {
+  const [activeIndex, setActiveIndex] = useState(null);
   return (
     <SectionWrapper id="projects" className="relative">
       <h2 className="text-2xl sm:text-3xl font-bold text-center gradient-text mb-8">Projects</h2>
@@ -39,7 +41,13 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.55, delay: idx * 0.1 }}
-            className="glass neon-border p-6 group [transform-style:preserve-3d] will-change-transform"
+            onClick={() => setActiveIndex((prev) => (prev === idx ? null : idx))}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActiveIndex((prev) => (prev === idx ? null : idx)); } }}
+            className={`glass neon-border p-6 group [transform-style:preserve-3d] will-change-transform relative overflow-hidden transition-shadow duration-300 ${
+              activeIndex === idx ? 'ring-2 ring-cyan-400/60 shadow-[0_0_55px_rgba(34,211,238,0.35)]' : ''
+            }`}
             style={{ perspective: 1000 }}
             onMouseMove={(e) => {
               const card = e.currentTarget;
@@ -54,6 +62,9 @@ export default function Projects() {
               e.currentTarget.style.transform = 'rotateX(0deg) rotateY(0deg)';
             }}
           >
+            <div className={`pointer-events-none absolute -inset-1 bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 blur-2xl transition-opacity ${
+              activeIndex === idx ? 'opacity-80' : 'opacity-60'
+            }`} />
             <header className="flex items-start justify-between gap-3">
               <div>
                 <h3 className="text-xl font-semibold">{p.title}</h3>
@@ -79,7 +90,7 @@ export default function Projects() {
             </ul>
 
             <div className="mt-5">
-              <button className="btn-outline neon-hover">View More</button>
+              <button className="btn-outline neon-hover hover:shadow-[0_0_25px_rgba(34,211,238,0.35)] hover:scale-105 transition-transform">View More</button>
             </div>
           </motion.article>
         ))}
