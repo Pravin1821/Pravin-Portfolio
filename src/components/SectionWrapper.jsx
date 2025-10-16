@@ -8,7 +8,7 @@ export default function SectionWrapper({ id, children, className = '' }) {
   const opacity = useTransform(scrollYProgress, [0, 0.3, 1], [0, 1, 1]);
 
   return (
-    <section id={id} ref={ref} className={`section-padding container-padded ${className}`}>
+    <section id={id} ref={ref} className={`section-padding container-padded relative ${className}`}>
       <motion.div style={{ y, opacity }}>
         {children}
       </motion.div>

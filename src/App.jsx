@@ -17,7 +17,7 @@ function App() {
       <AnimatedBackground />
       <Navbar />
       <BackToTop />
-      <main className="space-y-20">
+      <main className="space-y-20 relative">
         <Hero />
         <About />
         <Skills />

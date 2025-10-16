@@ -4,7 +4,7 @@ import profile from '../assets/profile.jpg';
 
 export default function Hero() {
   return (
-    <header id="hero" className="relative min-h-screen flex items-center justify-center px-4 md:py-20" style={{ background: 'linear-gradient(180deg,#0a0a0a 0%, #1a1a1a 100%)' }}>
+    <header id="hero" className="relative min-h-screen flex items-center justify-center px-4 md:py-20">
       {/* ambient background glows */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div className="absolute -top-24 left-1/4 w-72 h-72 rounded-full blur-3xl opacity-25 bg-[#7c3aed]" />
