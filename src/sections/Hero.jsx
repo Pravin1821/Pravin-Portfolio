@@ -7,7 +7,7 @@ import AnimatedBackground from '../components/AnimatedBackground.jsx';
 
 export default function Hero() {
   return (
-    <header id="hero" className="relative min-h-screen flex items-center px-4 md:py-20 bg-gradient-to-b from-[#0a0a0a] via-[#0f172a] to-[#1a1a1a]">
+    <header id="hero" className="relative min-h-screen flex items-center px-4 md:py-20">
       {/* global animated particles background (ensure it's behind all content) */}
       <div className="absolute inset-0 -z-20 pointer-events-none">
         <AnimatedBackground />
@@ -19,7 +19,7 @@ export default function Hero() {
       </div>
 
       <div className="container-padded w-full">
-        <div className="relative z-10 bg-black/20 backdrop-blur-sm p-6 md:p-8 rounded-3xl">
+        <div className="relative z-10 p-6 md:p-8 rounded-3xl">
           <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
           {/* Left: Intro Text */}
           <div className="order-2 md:order-1 text-center md:text-left">
